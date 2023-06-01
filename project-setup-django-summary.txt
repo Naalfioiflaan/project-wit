@@ -1,0 +1,38 @@
+1. Setup python virtual environment
+2. Clone atau download project dari https://github.com/atnlie/ecommerce-django-project
+    - git clone https://github.com/atnlie/ecommerce-django-project.git
+    - Download manual
+3. Ganti branch
+    - Untuk memeriksa branch yang ada: git branch
+    - git checkout all_auth
+4. Install python libraries dari file `requirements.txt`
+    - Ubah library backports.zoneinfo==0.2.1;python_version<"3.9" di requirements.txt
+    - pip install -r requirements.txt
+5. Ubah ke Database ke sqlite3 (sementara jika belum menginstall PostgreSQL server)
+    - di dalam file ecomm/settings.py, uncomment line 102 sampai 107 untuk menggunakan SQLite,
+      comment line 109 sampai 118 (variable DATABASES PostgreSQL)
+    - di dalam file ecomm/settings.py, uncomment line 199 sampai 208 untuk menggunakan SQLite,
+    - tambah konfigurasi sqlite setelah postgres
+    -   DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+            }
+        }
+6. Ganti nama file .template.env ke .env, lalu untuk isinya ambil dari template.env
+7. Jalankan applikasi Django
+    - python manage.py runserver
+    - jika server error karena table belum ada, berhentikan server lanjutkan database migration di nomor 8
+8. Jalankan database migration atau membuat tables di database yang dibutuhkan oleh aplikasi
+    - python manage.py migrate 
+9. Jalankan kembali server
+    - python manage.py runserver
+10. Akses http://127.0.0.1:8000 di browser
+11. Membuat user admin
+    - python manage.py createsuperuser
+12. Jalankan kembali server atau aplikasi django nya
+    - python manage.py runserver
+13. Akses http://127.0.0.1:8000/admin
+14. Tambah Produk Items
+15. Buat akun Sandbox PayPal di https://www.sandbox.paypal.com
+16. Link a card di sandbox.paypal.com, pakai informasi kartu dari https://developer.paypal.com/tools/sandbox/card-testing/
