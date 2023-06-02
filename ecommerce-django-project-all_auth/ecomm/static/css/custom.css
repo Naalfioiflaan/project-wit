@@ -1,9 +1,14 @@
+*{
+  --mdb-font-roboto: "Montserrat", sans-serif !important; 
+}
+
 .carousel-item {
   height: 30vh;
 }
 .card {
 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
 .footer-cta {
 box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
 }
