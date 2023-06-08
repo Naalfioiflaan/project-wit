@@ -13,8 +13,17 @@ from .models import ProdukItem, OrderProdukItem, Order, AlamatPengiriman, Paymen
 
 class HomeListView(generic.ListView):
     template_name = 'home.html'
-    queryset = ProdukItem.objects.all()
     paginate_by = 4
+    def get_queryset(self):
+        queryset = ProdukItem.objects.all()
+        if self.request.GET.get('category'):
+            if (self.request.GET.get('category') == 'Komik'):
+                queryset = ProdukItem.objects.filter(kategori = 'K')
+            if (self.request.GET.get('category') == 'Majalah'):
+                queryset = ProdukItem.objects.filter(kategori = 'M')
+            if (self.request.GET.get('category') == 'Novel'):
+                queryset = ProdukItem.objects.filter(kategori = 'N')
+        return queryset
 
 class ProductDetailView(generic.DetailView):
     template_name = 'product_detail.html'
